@@ -16,17 +16,18 @@ import {
   import Image from "next/image";
 
   export default function LoginModal() {
+    const [open,setOpen] = useState<boolean>(false);
     return (
-    <AlertDialog>
+    <AlertDialog open={open}>
     <AlertDialogTrigger asChild>
-    <li className="hover:bg-gray-200 rounded-md p-2 cursor-pointer">Login</li>
+    <li onClick={()=>{setOpen(true)}} className="hover:bg-gray-200 rounded-md p-2 cursor-pointer">Login</li>
     </AlertDialogTrigger>
     <AlertDialogContent>
         <AlertDialogHeader>
         <AlertDialogTitle asChild>
             <div className="flex justify-between">
                 <span>Login</span>
-                <X/>
+                <X className = "cursor-pointer" onClick={()=>{setOpen(false)}}/>
             </div>
         </AlertDialogTitle>
         <AlertDialogDescription>
@@ -46,7 +47,7 @@ import {
                 <Button className="bg-brand w-full">Continue</Button>
                 </div>
                 <h1 className="text-center mt-5 font-bold text-lg">-- OR --</h1>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full mt-5">
                     <Image 
                     src="/images/google.png"
                     width={25}
@@ -56,7 +57,7 @@ import {
                     />
                     Continue with Google 
                 </Button>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="w-full mt-5">
                     <Image 
                     src="/images/github.png"
                     width={25}
